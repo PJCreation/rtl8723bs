@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         apt-get update
-        apt-get install -y build-essential linux-headers-6.5.0-28-generic
+        apt-get install -y build-essential linux-headers-generic
         
     - name: Build project
       run: make KVER=${{env.KVER}}
