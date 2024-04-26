@@ -11,7 +11,7 @@ jobs:
       image: ubuntu:16.04 # 使用Ubuntu 16.04容器环境
 
     env:
-      KVER := 4.4.0-210-generic
+      KVER : "4.4.0-210-generic"
       
     steps:
     - name: Checkout repository
