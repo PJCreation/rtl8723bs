@@ -5,13 +5,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     container:
-      image: ubuntu:latest # 使用Ubuntu 16.04容器环境
+      image: ubuntu:22.04 # 使用Ubuntu 22.04容器环境
 
-    env:
-      KVER : "6.5.0-28-generic"
+    # env:
+    #   KVER : "6.5.0-28-generic"
       
     steps:
     - name: Checkout repository
@@ -19,11 +19,13 @@ jobs:
       
     - name: Install dependencies
       run: |
+        uname -r
         apt-get update
         apt-get install -y build-essential linux-headers-generic
         
     - name: Build project
-      run: make KVER=${{env.KVER}}
+      run: make
+      # KVER=${{env.KVER}}
 
     - name: Upload release
       uses: actions/upload-artifact@v3
