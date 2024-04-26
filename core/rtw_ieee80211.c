@@ -16,7 +16,6 @@
 
 #include <drv_types.h>
 #include <rtw_debug.h>
-#include <linux/of.h>
 
 
 u8 RTW_WPA_OUI_TYPE[] = { 0x00, 0x50, 0xf2, 1 };
