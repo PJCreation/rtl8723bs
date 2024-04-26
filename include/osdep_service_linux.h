@@ -68,7 +68,7 @@
 	typedef unsigned long _irqL;
 	typedef	struct	net_device * _nic_hdl;
 
-	#define thread_exit() kthread_complete_ahd_exit(NULL, 0)
+	#define thread_exit() kthread_complete_and_exit(NULL, 0)
 
 	typedef void timer_hdl_return;
 	typedef void* timer_hdl_context;
