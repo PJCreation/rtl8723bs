@@ -10,8 +10,8 @@ jobs:
     container:
       image: ubuntu:latest # 使用Ubuntu 22.04容器环境
 
-    # env:
-    #   KVER : "6.5.0-18-generic"
+    env:
+      KVER : "6.8.0-31-generic"
       
     steps:
     - name: Checkout repository
@@ -24,8 +24,7 @@ jobs:
         apt-get install -y build-essential linux-headers-generic
         
     - name: Build project
-      run: make
-      # KVER=${{env.KVER}}
+      run: make KVER=${{env.KVER}}
 
     - name: Upload release
       uses: actions/upload-artifact@v3
