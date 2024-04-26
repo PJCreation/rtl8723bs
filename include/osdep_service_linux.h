@@ -44,7 +44,6 @@
 	#include <linux/kthread.h>
 	#include <linux/list.h>
 	#include <linux/vmalloc.h>
-	#include <linux/timer.h>
 
 /* 	#include <linux/ieee80211.h> */
         #include <net/ieee80211_radiotap.h>
@@ -91,9 +90,12 @@ __inline static struct list_head	*get_list_head(struct __queue	*queue)
 
 #define RTW_TIMER_HDL_ARGS void *FunctionContext
 
-__inline static void _init_timer(struct timer_list *ptimer, void (*callback)(struct timer_list *), void *cntx)
+__inline static void _init_timer(_timer *ptimer, _nic_hdl nic_hdl, void *pfunc, void* cntx)
 {
-    timer_setup(ptimer, callback, 0);
+	/* setup_timer(ptimer, pfunc, (u32)cntx); */
+	ptimer->function = pfunc;
+	ptimer->data = (unsigned long)cntx;
+	timer_setup(ptimer);
 }
 
 __inline static void _set_timer(_timer *ptimer, u32 delay_time)
