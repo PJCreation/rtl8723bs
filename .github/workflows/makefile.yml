@@ -1,12 +1,6 @@
 name: Build Drivers
 
-on:
-  push:
-    branches:
-      - test1
-  pull_request:
-    branches:
-      - test1
+on: [push, pull_request]
 
 jobs:
   build:
