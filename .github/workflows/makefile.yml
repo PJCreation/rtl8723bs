@@ -24,3 +24,9 @@ jobs:
         
     - name: Build project
       run: make KVER=${{env.KVER}}
+
+    - name: Upload release
+      uses: actions/upload-artifact@v3
+      with:
+        name: rtl8723bs
+        path: r8723bs.ko
