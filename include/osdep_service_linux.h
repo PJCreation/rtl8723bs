@@ -67,7 +67,7 @@
 	typedef unsigned long _irqL;
 	typedef	struct	net_device * _nic_hdl;
 
-	#define thread_exit() complete_and_exit(NULL, 0)
+	#define thread_exit() kthread_complete_ahd_exit(NULL, 0)
 
 	typedef void timer_hdl_return;
 	typedef void* timer_hdl_context;
@@ -95,7 +95,7 @@ __inline static void _init_timer(_timer *ptimer, _nic_hdl nic_hdl, void *pfunc, 
 	/* setup_timer(ptimer, pfunc, (u32)cntx); */
 	ptimer->function = pfunc;
 	ptimer->data = (unsigned long)cntx;
-	init_timer(ptimer);
+	timer_setup(ptimer);
 }
 
 __inline static void _set_timer(_timer *ptimer, u32 delay_time)
