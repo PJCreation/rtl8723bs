@@ -1174,13 +1174,9 @@ void rtw_init_pwrctrl_priv(struct adapter *padapter)
 
 	pwrctrlpriv->brpwmtimeout = false;
 	_init_workitem(&pwrctrlpriv->rpwmtimeoutwi, rpwmtimeout_workitem_callback, NULL);
-
-    // 确保pwr_rpwm_timer是struct timer_list类型的变量
-	struct timer_list *pwr_rpwm_timer = &pwrctrlpriv->pwr_rpwm_timer;
-	_init_timer(&pwrctrlpriv->pwr_rpwm_timer, pwr_rpwm_timeout_handler, padapter);
+	_init_timer(&pwrctrlpriv->pwr_rpwm_timer, padapter->pnetdev, pwr_rpwm_timeout_handler, padapter);
 
 	rtw_init_timer(&pwrctrlpriv->pwr_state_check_timer, padapter, pwr_state_check_handler);
-
 
 	pwrctrlpriv->wowlan_mode = false;
 	pwrctrlpriv->wowlan_ap_mode = false;
