@@ -595,8 +595,6 @@ post_process:
 	atomic_set(&(pcmdpriv->cmdthd_running), false);
 
 	thread_exit();
-	
-	return 0;
 }
 
 /*
